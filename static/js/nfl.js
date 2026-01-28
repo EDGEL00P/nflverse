@@ -42,6 +42,12 @@ async function loadTeams() {
     try {
         const response = await fetch(`${API_BASE}/api/nfl/teams`);
         const data = await response.json();
+        
+        // Validate response structure
+        if (!data || !Array.isArray(data.data)) {
+            throw new Error('Invalid response structure');
+        }
+        
         allTeams = data.data;
         displayTeams(allTeams);
     } catch (error) {
@@ -77,6 +83,12 @@ async function loadGames() {
     try {
         const response = await fetch(`${API_BASE}/api/nfl/games`);
         const data = await response.json();
+        
+        // Validate response structure
+        if (!data || !Array.isArray(data.data)) {
+            throw new Error('Invalid response structure');
+        }
+        
         allGames = data.data;
         displayGames(allGames);
     } catch (error) {
@@ -116,6 +128,12 @@ async function loadStandings() {
     try {
         const response = await fetch(`${API_BASE}/api/nfl/standings`);
         const data = await response.json();
+        
+        // Validate response structure
+        if (!data || !Array.isArray(data.data)) {
+            throw new Error('Invalid response structure');
+        }
+        
         allStandings = data.data;
         displayStandings(allStandings);
     } catch (error) {
@@ -133,8 +151,8 @@ function displayStandings(standings) {
         return;
     }
     
-    // Sort by wins (descending)
-    standings.sort((a, b) => b.wins - a.wins);
+    // Create a copy before sorting to avoid mutating the original array
+    const sortedStandings = [...standings].sort((a, b) => b.wins - a.wins);
     
     container.innerHTML = `
         <div class="standings-table">
@@ -146,7 +164,7 @@ function displayStandings(standings) {
                 <div class="standings-cell">Conference</div>
                 <div class="standings-cell">Division</div>
             </div>
-            ${standings.map((team, index) => `
+            ${sortedStandings.map((team, index) => `
                 <div class="standings-row ${index % 2 === 0 ? 'even' : 'odd'}">
                     <div class="standings-cell"><strong>${team.team}</strong></div>
                     <div class="standings-cell">${team.wins}</div>
@@ -169,6 +187,12 @@ async function loadPlayers() {
     try {
         const response = await fetch(`${API_BASE}/api/nfl/players`);
         const data = await response.json();
+        
+        // Validate response structure
+        if (!data || !Array.isArray(data.data)) {
+            throw new Error('Invalid response structure');
+        }
+        
         allPlayers = data.data;
         displayPlayers(allPlayers);
     } catch (error) {
@@ -270,10 +294,22 @@ function filterPlayers() {
 
 // Utility functions
 function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-        month: 'short', 
-        day: 'numeric', 
-        year: 'numeric' 
-    });
+    if (!dateString) {
+        return 'Date TBD';
+    }
+    
+    try {
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+            return 'Invalid Date';
+        }
+        return date.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric', 
+            year: 'numeric' 
+        });
+    } catch (error) {
+        console.error('Error formatting date:', error);
+        return 'Invalid Date';
+    }
 }
