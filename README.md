@@ -1,5 +1,7 @@
 # NFLVerse Web Dashboard
 
+This repository is structured to mirror the upstream nflverse project layout so you can set up your own repo the same way.
+
 <img src="https://github.com/user-attachments/assets/43cc10cd-42dd-4095-af96-0f109bee0a02" width="800">
 
 An interactive web-based NFL data dashboard for exploring teams, games, players, and standings. Built with Flask and vanilla JavaScript for a fast, responsive experience.
