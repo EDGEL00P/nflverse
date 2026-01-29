@@ -8,6 +8,10 @@ An interactive web-based NFL data dashboard for exploring teams, games, players,
 
 ### R package (nflverse)
 
+Upstream repository:
+- Homepage: https://github.com/nflverse/nflverse/
+- Git: https://github.com/nflverse/nflverse.git
+
 To install the nflverse R package from CRAN:
 
 ```r
