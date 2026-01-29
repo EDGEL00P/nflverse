@@ -6,44 +6,39 @@ An interactive web-based NFL data dashboard for exploring teams, games, players,
 
 ## Installation
 
-The easiest way to get started with the NFLVerse web dashboard is to install it locally:
+### R package (nflverse)
 
-### Prerequisites
+To install the nflverse R package from CRAN:
 
-- Python 3.8 or higher
-- pip (Python package manager)
+```r
+install.packages("nflverse")
+```
 
-### Quick Start from GitHub
+For the development version:
+
+```r
+if (!require("pak")) install.packages("pak")
+pak::pak("nflverse/nflverse")
+```
+
+Or install the prebuilt development build:
+
+```r
+install.packages("nflverse", repos = c("https://nflverse.r-universe.dev", getOption("repos")))
+```
+
+### Local dashboard (this repo)
+
+The included Flask/JS dashboard can still be run locally:
 
 ```bash
-# Clone the repository
 git clone https://github.com/EDGEL00P/nflverse.git
 cd nflverse
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run the application
 python app.py
 ```
 
 Then open your browser and navigate to `http://localhost:5000`
-
-### Development Version
-
-To work with the development version:
-
-```bash
-# Clone the repository
-git clone https://github.com/EDGEL00P/nflverse.git
-cd nflverse
-
-# Install dependencies in development mode
-pip install -r requirements.txt
-
-# Run with debug mode
-python app.py
-```
 
 ## Usage
 
@@ -192,4 +187,3 @@ MIT License - see LICENSE file for details
 ## Acknowledgments
 
 Inspired by the [nflverse](https://github.com/nflverse/nflverse) R ecosystem for NFL data analysis. This web dashboard aims to provide an accessible browser-based interface for exploring NFL data.
-
