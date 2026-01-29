@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFLVerse - NFL Data Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🏈 NFLVerse</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="active">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <div class="hero">
+            <h2>NFL Data Dashboard</h2>
+            <p>Explore NFL teams, games, players, and standings</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="teams">Teams</button>
+            <button class="tab-button" data-tab="games">Games</button>
+            <button class="tab-button" data-tab="standings">Standings</button>
+            <button class="tab-button" data-tab="players">Players</button>
+        </div>
+
+        <div id="teams" class="tab-content active">
+            <div class="section">
+                <h3>NFL Teams</h3>
+                <div class="filters">
+                    <select id="conferenceFilter" class="filter-select">
+                        <option value="">All Conferences</option>
+                        <option value="AFC">AFC</option>
+                        <option value="NFC">NFC</option>
+                    </select>
+                    <select id="divisionFilter" class="filter-select">
+                        <option value="">All Divisions</option>
+                        <option value="East">East</option>
+                        <option value="West">West</option>
+                        <option value="North">North</option>
+                        <option value="South">South</option>
+                    </select>
+                </div>
+                <div id="teamsContainer" class="grid-container">
+                    <div class="loading">Loading teams...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="games" class="tab-content">
+            <div class="section">
+                <h3>Recent Games</h3>
+                <div id="gamesContainer" class="games-container">
+                    <div class="loading">Loading games...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="standings" class="tab-content">
+            <div class="section">
+                <h3>NFL Standings</h3>
+                <div class="filters">
+                    <select id="standingsConferenceFilter" class="filter-select">
+                        <option value="">All Conferences</option>
+                        <option value="AFC">AFC</option>
+                        <option value="NFC">NFC</option>
+                    </select>
+                </div>
+                <div id="standingsContainer" class="standings-container">
+                    <div class="loading">Loading standings...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="players" class="tab-content">
+            <div class="section">
+                <h3>Featured Players</h3>
+                <div class="filters">
+                    <input type="text" id="playerSearch" class="search-input" placeholder="Search players by name or team...">
+                </div>
+                <div id="playersContainer" class="grid-container">
+                    <div class="loading">Loading players...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 NFLVerse. Your source for NFL data.</p>
+        </div>
+    </footer>
+
+    <script src="/js/nfl.js"></script>
+</body>
+</html>
