@@ -1,49 +1,50 @@
 # NFLVerse Web Dashboard
 
+This repository is structured to mirror the upstream nflverse project layout so you can set up your own repo the same way.
+
 <img src="https://github.com/user-attachments/assets/43cc10cd-42dd-4095-af96-0f109bee0a02" width="800">
 
 An interactive web-based NFL data dashboard for exploring teams, games, players, and standings. Built with Flask and vanilla JavaScript for a fast, responsive experience.
 
 ## Installation
 
-The easiest way to get started with the NFLVerse web dashboard is to install it locally:
+### R package (nflverse)
 
-### Prerequisites
+Upstream repository:
+- Homepage: https://github.com/nflverse/nflverse/
+- Git: https://github.com/nflverse/nflverse.git
 
-- Python 3.8 or higher
-- pip (Python package manager)
+To install the nflverse R package from CRAN:
 
-### Quick Start from GitHub
+```r
+install.packages("nflverse")
+```
+
+For the development version:
+
+```r
+if (!require("pak")) install.packages("pak")
+pak::pak("nflverse/nflverse")
+```
+
+Or install the prebuilt development build:
+
+```r
+install.packages("nflverse", repos = c("https://nflverse.r-universe.dev", getOption("repos")))
+```
+
+### Local dashboard (this repo)
+
+The included Flask/JS dashboard can still be run locally:
 
 ```bash
-# Clone the repository
 git clone https://github.com/EDGEL00P/nflverse.git
 cd nflverse
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run the application
 python app.py
 ```
 
 Then open your browser and navigate to `http://localhost:5000`
-
-### Development Version
-
-To work with the development version:
-
-```bash
-# Clone the repository
-git clone https://github.com/EDGEL00P/nflverse.git
-cd nflverse
-
-# Install dependencies in development mode
-pip install -r requirements.txt
-
-# Run with debug mode
-python app.py
-```
 
 ## Usage
 
@@ -192,4 +193,3 @@ MIT License - see LICENSE file for details
 ## Acknowledgments
 
 Inspired by the [nflverse](https://github.com/nflverse/nflverse) R ecosystem for NFL data analysis. This web dashboard aims to provide an accessible browser-based interface for exploring NFL data.
-
