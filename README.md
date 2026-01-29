@@ -40,6 +40,7 @@ The included Flask/JS dashboard can still be run locally:
 ```bash
 git clone https://github.com/EDGEL00P/nflverse.git
 cd nflverse
+cp .env.example .env  # keeps local config consistent (port/debug)
 pip install -r requirements.txt
 python app.py
 ```
